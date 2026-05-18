@@ -1,0 +1,3250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>English Spaces Studio</title>
+  <meta name="description" content="A static GitHub Pages writing workspace with personal spaces, public writing, comments, and optional Gemini AI CEFR feedback.">
+  <link rel="icon" href="./logo.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="./logo.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#111112">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #111112;
+      --bg-soft: #171719;
+      --panel: #1e1d22;
+      --panel-2: #26242b;
+      --panel-3: #302d35;
+      --line: rgba(255, 255, 255, 0.09);
+      --line-strong: rgba(255, 255, 255, 0.16);
+      --text: #f4f2ee;
+      --muted: #aaa4b5;
+      --muted-2: #7c7688;
+      --teal: #74d3d0;
+      --green: #a7e36f;
+      --amber: #f6b85a;
+      --rose: #ff7b97;
+      --violet: #b7a1ff;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+      --rail-bg: rgba(17, 17, 18, 0.86);
+      --panel-glass: rgba(30, 29, 34, 0.78);
+      --panel-strong: rgba(30, 29, 34, 0.96);
+      --editor-glass: rgba(30, 29, 34, 0.9);
+      --control-bg: rgba(255, 255, 255, 0.04);
+      --control-bg-strong: rgba(255, 255, 255, 0.06);
+      --focus-bg: rgba(116, 211, 208, 0.07);
+      --hover-bg: rgba(116, 211, 208, 0.1);
+      --subtle-bg: rgba(255, 255, 255, 0.035);
+      --editor-top-glow: rgba(255, 255, 255, 0.035);
+      --editor-rule: rgba(255, 255, 255, 0.032);
+      --score-track: rgba(255, 255, 255, 0.07);
+      --brand-mark-bg: #191a1c;
+      --score-bg: #171719;
+      --score-inner: #18171b;
+      --article-text: #ded9e6;
+      --toast-bg: rgba(23, 23, 25, 0.94);
+      --editor-actions-bg: rgba(0, 0, 0, 0.12);
+      --radius: 8px;
+      --radius-sm: 6px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg: #f6efe3;
+      --bg-soft: #fff8ec;
+      --panel: #fff9ef;
+      --panel-2: #f0e7d9;
+      --panel-3: #e8dfd1;
+      --line: rgba(71, 56, 41, 0.14);
+      --line-strong: rgba(71, 56, 41, 0.24);
+      --text: #27211b;
+      --muted: #706557;
+      --muted-2: #948575;
+      --teal: #237f78;
+      --green: #4d7d2c;
+      --amber: #a86919;
+      --rose: #b94159;
+      --violet: #6657b8;
+      --shadow: 0 18px 50px rgba(84, 66, 42, 0.15);
+      --rail-bg: rgba(255, 248, 236, 0.9);
+      --panel-glass: rgba(255, 250, 241, 0.84);
+      --panel-strong: rgba(255, 250, 241, 0.98);
+      --editor-glass: rgba(255, 250, 242, 0.94);
+      --control-bg: rgba(111, 87, 58, 0.06);
+      --control-bg-strong: rgba(111, 87, 58, 0.09);
+      --focus-bg: rgba(35, 127, 120, 0.09);
+      --hover-bg: rgba(35, 127, 120, 0.1);
+      --subtle-bg: rgba(111, 87, 58, 0.055);
+      --editor-top-glow: rgba(255, 255, 255, 0.55);
+      --editor-rule: rgba(95, 73, 45, 0.13);
+      --score-track: rgba(95, 73, 45, 0.12);
+      --brand-mark-bg: #fffaf1;
+      --score-bg: #f0e7d9;
+      --score-inner: #fff9ef;
+      --article-text: #342b23;
+      --toast-bg: rgba(255, 249, 239, 0.96);
+      --editor-actions-bg: rgba(95, 73, 45, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--bg);
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background:
+        linear-gradient(135deg, rgba(116, 211, 208, 0.08), transparent 26%),
+        radial-gradient(circle at 92% 8%, rgba(255, 123, 151, 0.12), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      letter-spacing: 0;
+    }
+
+    html[data-theme="light"] body {
+      background:
+        linear-gradient(135deg, rgba(35, 127, 120, 0.11), transparent 30%),
+        radial-gradient(circle at 92% 8%, rgba(185, 65, 89, 0.1), transparent 23%),
+        linear-gradient(180deg, #fff8ec 0%, var(--bg) 46%, #f2e7d6 100%);
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.58;
+    }
+
+    button:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 3px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--control-bg);
+      color: var(--text);
+      outline: 0;
+      transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: rgba(116, 211, 208, 0.72);
+      background: var(--focus-bg);
+      box-shadow: 0 0 0 3px rgba(116, 211, 208, 0.12);
+    }
+
+    input,
+    select {
+      min-height: 40px;
+      padding: 0 12px;
+    }
+
+    select {
+      color-scheme: dark;
+    }
+
+    html[data-theme="light"] select {
+      color-scheme: light;
+    }
+
+    select option {
+      background: var(--panel);
+      color: var(--text);
+    }
+
+    html[data-theme="dark"] select option:checked {
+      background: #2f7f7a;
+      color: #ffffff;
+    }
+
+    html[data-theme="light"] select option:checked {
+      background: #d7ebe7;
+      color: #1f2b29;
+    }
+
+    ::placeholder {
+      color: var(--muted-2);
+      opacity: 0.9;
+    }
+
+    textarea {
+      resize: vertical;
+      padding: 12px;
+      line-height: 1.65;
+    }
+
+    .app-shell {
+      display: grid;
+      grid-template-columns: 286px minmax(0, 1fr) 390px;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .sidebar,
+    .right-rail {
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--rail-bg);
+      border-color: var(--line);
+      backdrop-filter: blur(20px);
+    }
+
+    .sidebar {
+      border-right: 1px solid var(--line);
+      padding: 18px 14px;
+    }
+
+    .right-rail {
+      border-left: 1px solid var(--line);
+      padding: 18px 14px;
+    }
+
+    .workspace {
+      height: 100vh;
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    .brand {
+      display: flex;
+      gap: 11px;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 18px;
+      padding: 8px 6px 14px;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      text-align: left;
+    }
+
+    .brand:hover {
+      color: var(--text);
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(116, 211, 208, 0.38);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(116, 211, 208, 0.22), rgba(183, 161, 255, 0.1)),
+        var(--brand-mark-bg);
+      box-shadow: inset 0 0 22px rgba(116, 211, 208, 0.08);
+    }
+
+    .brand-mark svg {
+      color: var(--teal);
+    }
+
+    .brand-mark img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      object-fit: cover;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 760;
+      line-height: 1.1;
+    }
+
+    .brand p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 18px 0 10px;
+    }
+
+    .section-title h2,
+    .section-title h3 {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 760;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .soft-panel,
+    .metric-strip,
+    .editor-shell,
+    .feedback-panel,
+    .entry-list,
+    .wall-card,
+    .settings-panel,
+    .sync-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel-glass);
+      box-shadow: var(--shadow);
+    }
+
+    .soft-panel,
+    .settings-panel,
+    .sync-panel {
+      padding: 12px;
+    }
+
+    .space-form {
+      display: grid;
+      gap: 8px;
+    }
+
+    .space-form .row {
+      display: grid;
+      grid-template-columns: 1fr 42px;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .ghost-btn,
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 38px;
+      border-radius: var(--radius-sm);
+      transition: transform 140ms ease, background 160ms ease, border-color 160ms ease, color 160ms ease;
+      white-space: nowrap;
+    }
+
+    .primary-btn {
+      border: 1px solid rgba(116, 211, 208, 0.58);
+      background: linear-gradient(135deg, rgba(116, 211, 208, 0.24), rgba(116, 211, 208, 0.12));
+      color: var(--text);
+      font-weight: 720;
+      padding: 0 14px;
+    }
+
+    .secondary-btn {
+      border: 1px solid var(--line-strong);
+      background: var(--control-bg-strong);
+      color: var(--text);
+      padding: 0 12px;
+    }
+
+    .ghost-btn {
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      padding: 0 10px;
+    }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      background: var(--control-bg);
+      color: var(--muted);
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover,
+    .ghost-btn:hover,
+    .icon-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(116, 211, 208, 0.42);
+      background: var(--hover-bg);
+      color: var(--text);
+    }
+
+    .primary-btn svg,
+    .secondary-btn svg,
+    .ghost-btn svg,
+    .icon-btn svg,
+    .brand-mark svg {
+      width: 17px;
+      height: 17px;
+      stroke-width: 2;
+    }
+
+    .spaces-list,
+    .draft-list,
+    .wall-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .theme-switch {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+      box-shadow: none;
+    }
+
+    .device-switch {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 12px;
+      box-shadow: none;
+    }
+
+    .device-switch .section-title {
+      margin: 0;
+    }
+
+    .device-options {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .theme-btn {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--control-bg);
+      color: var(--muted);
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-weight: 720;
+      transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+    }
+
+    .theme-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .theme-btn.is-active,
+    .device-btn.is-active,
+    .theme-btn:hover {
+      border-color: rgba(116, 211, 208, 0.42);
+      background: var(--hover-bg);
+      color: var(--text);
+    }
+
+    .device-btn:hover {
+      border-color: rgba(116, 211, 208, 0.42);
+      background: var(--hover-bg);
+      color: var(--text);
+    }
+
+    .space-item {
+      display: grid;
+      grid-template-columns: 4px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      width: 100%;
+      min-width: 0;
+      min-height: 58px;
+      padding: 8px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--text);
+      text-align: left;
+    }
+
+    .space-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 38px;
+      gap: 8px;
+      align-items: stretch;
+    }
+
+    .space-delete {
+      align-self: center;
+      color: var(--rose);
+    }
+
+    .danger-btn:hover {
+      border-color: rgba(255, 123, 151, 0.48);
+      background: rgba(255, 123, 151, 0.12);
+      color: var(--rose);
+    }
+
+    .space-item.is-active {
+      border-color: rgba(116, 211, 208, 0.32);
+      background: rgba(116, 211, 208, 0.08);
+    }
+
+    .space-color {
+      width: 4px;
+      height: 36px;
+      border-radius: 20px;
+      background: var(--teal);
+    }
+
+    .space-name {
+      display: block;
+      overflow: hidden;
+      font-weight: 760;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .space-goal {
+      display: block;
+      overflow: hidden;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .count-pill,
+    .level-pill,
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 24px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 720;
+      padding: 0 8px;
+    }
+
+    .level-pill {
+      border-color: rgba(246, 184, 90, 0.36);
+      color: var(--amber);
+      background: rgba(246, 184, 90, 0.08);
+    }
+
+    .status-pill {
+      border-color: rgba(167, 227, 111, 0.34);
+      color: var(--green);
+      background: rgba(167, 227, 111, 0.08);
+    }
+
+    .static-note {
+      margin-top: 14px;
+      border-color: rgba(255, 123, 151, 0.28);
+      background: rgba(255, 123, 151, 0.06);
+    }
+
+    .static-note p,
+    .sync-panel p,
+    .settings-panel p,
+    .empty-state p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .workspace-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: start;
+      margin: 0 0 18px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 8px;
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 760;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .workspace-header h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .workspace-header p {
+      max-width: 760px;
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .metric-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      background: var(--line);
+      box-shadow: none;
+    }
+
+    .metric {
+      min-width: 0;
+      padding: 14px;
+      background: var(--panel-strong);
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .metric strong {
+      display: block;
+      overflow: hidden;
+      margin-top: 6px;
+      font-size: 22px;
+      line-height: 1;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 310px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .editor-shell {
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, var(--editor-top-glow), transparent 160px),
+        var(--editor-glass);
+    }
+
+    .editor-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 170px;
+      gap: 10px;
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .entry-title-input {
+      min-height: 48px;
+      border: 0;
+      background: transparent;
+      font-size: 24px;
+      font-weight: 780;
+      padding: 0;
+    }
+
+    .entry-title-input:focus {
+      box-shadow: none;
+      background: transparent;
+    }
+
+    .editor-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      background: var(--editor-actions-bg);
+    }
+
+    .editor-actions .save-state {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      margin-left: auto;
+      color: var(--muted-2);
+      font-size: 12px;
+    }
+
+    .writing-area {
+      min-height: 420px;
+      border: 0;
+      border-radius: 0;
+      background:
+        linear-gradient(var(--editor-rule) 1px, transparent 1px) 0 17px / 100% 31px,
+        transparent;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.9;
+      padding: 22px;
+    }
+
+    .writing-area:focus {
+      background:
+        linear-gradient(rgba(116, 211, 208, 0.045) 1px, transparent 1px) 0 17px / 100% 31px,
+        transparent;
+      box-shadow: none;
+    }
+
+    .feedback-panel {
+      margin-top: 18px;
+      padding: 16px;
+      box-shadow: none;
+    }
+
+    .feedback-header {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .score-ring {
+      display: grid;
+      place-items: center;
+      width: 68px;
+      height: 68px;
+      border: 1px solid rgba(246, 184, 90, 0.32);
+      border-radius: 50%;
+      background:
+        conic-gradient(var(--amber) var(--score-angle, 35deg), var(--score-track) 0),
+        var(--score-bg);
+    }
+
+    .score-ring span {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--score-inner);
+      color: var(--amber);
+      font-weight: 820;
+    }
+
+    .feedback-header h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .feedback-header p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .feedback-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .feedback-box {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 12px;
+      background: var(--subtle-bg);
+    }
+
+    .feedback-box h4 {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .feedback-box ul {
+      display: grid;
+      gap: 7px;
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    .feedback-box.full {
+      grid-column: 1 / -1;
+    }
+
+    .feedback-box.full p {
+      margin: 0;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .entry-list {
+      padding: 12px;
+      box-shadow: none;
+    }
+
+    .draft-card {
+      display: grid;
+      gap: 8px;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--subtle-bg);
+      color: var(--text);
+      text-align: left;
+    }
+
+    .draft-card.is-active {
+      border-color: rgba(116, 211, 208, 0.38);
+      background: rgba(116, 211, 208, 0.075);
+    }
+
+    .draft-card strong {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .draft-card > .ghost-btn {
+      justify-content: flex-start;
+      min-width: 0;
+      width: 100%;
+      padding: 0;
+    }
+
+    .draft-card > .ghost-btn strong {
+      min-width: 0;
+    }
+
+    .draft-meta,
+    .wall-meta,
+    .comment-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .empty-state {
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius);
+      padding: 18px;
+      text-align: center;
+    }
+
+    .right-rail .section-title:first-child {
+      margin-top: 0;
+    }
+
+    .search-box {
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    .search-box svg {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      width: 16px;
+      height: 16px;
+      color: var(--muted-2);
+      transform: translateY(-50%);
+    }
+
+    .search-box input {
+      padding-left: 36px;
+    }
+
+    .wall-card {
+      padding: 13px;
+      box-shadow: none;
+    }
+
+    .wall-card h3 {
+      margin: 7px 0 8px;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .wall-text {
+      max-height: 170px;
+      overflow: auto;
+      margin: 0;
+      color: var(--article-text);
+      line-height: 1.58;
+      white-space: pre-wrap;
+    }
+
+    .wall-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .comments {
+      display: grid;
+      gap: 8px;
+      margin-top: 11px;
+      padding-top: 11px;
+      border-top: 1px solid var(--line);
+    }
+
+    .comment {
+      border-radius: var(--radius-sm);
+      background: var(--subtle-bg);
+      padding: 8px;
+    }
+
+    .comment p {
+      margin: 5px 0 0;
+      color: var(--article-text);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .comment-form {
+      display: grid;
+      grid-template-columns: 96px 1fr auto;
+      gap: 7px;
+      align-items: start;
+    }
+
+    .comment-form textarea {
+      min-height: 40px;
+      max-height: 100px;
+      line-height: 1.35;
+      padding: 9px 10px;
+    }
+
+    .settings-panel {
+      display: grid;
+      gap: 10px;
+      box-shadow: none;
+    }
+
+    .field-label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .toggle-row input {
+      width: 18px;
+      min-height: 18px;
+      accent-color: var(--teal);
+    }
+
+    .helper-link {
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    .helper-link:hover {
+      text-decoration: underline;
+    }
+
+    .sync-panel {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+      box-shadow: none;
+    }
+
+    .sync-actions {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .sync-actions .secondary-btn {
+      padding: 0 8px;
+    }
+
+    .live-sync-panel {
+      border-color: rgba(116, 211, 208, 0.25);
+      background:
+        linear-gradient(135deg, rgba(116, 211, 208, 0.08), transparent 72%),
+        var(--panel-glass);
+    }
+
+    .live-sync-panel .section-title {
+      margin-top: 0;
+    }
+
+    .sync-status {
+      border-color: rgba(116, 211, 208, 0.34);
+      color: var(--teal);
+      background: rgba(116, 211, 208, 0.08);
+    }
+
+    .sync-status.is-offline {
+      border-color: var(--line);
+      color: var(--muted);
+      background: var(--control-bg);
+    }
+
+    .level-bars {
+      display: grid;
+      gap: 8px;
+    }
+
+    .level-row {
+      display: grid;
+      grid-template-columns: 36px 1fr 28px;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .bar {
+      height: 8px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: var(--score-track);
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--teal), var(--amber), var(--rose));
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      max-width: min(420px, calc(100vw - 36px));
+      border: 1px solid rgba(116, 211, 208, 0.38);
+      border-radius: var(--radius);
+      background: var(--toast-bg);
+      box-shadow: var(--shadow);
+      color: var(--text);
+      padding: 12px 14px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 180ms ease, transform 180ms ease;
+      pointer-events: none;
+    }
+
+    .toast.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .mobile-nav {
+      display: none;
+    }
+
+    @media (max-width: 1220px) {
+      .app-shell {
+        grid-template-columns: 250px minmax(0, 1fr);
+      }
+
+      .right-rail {
+        grid-column: 1 / -1;
+        height: auto;
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+
+      .wall-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .app-shell,
+      .studio-grid,
+      .workspace-header,
+      .editor-top,
+      .feedback-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar,
+      .workspace,
+      .right-rail {
+        height: auto;
+        min-height: 0;
+      }
+
+      .sidebar {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .workspace {
+        padding: 18px 14px;
+      }
+
+      .toolbar {
+        justify-content: flex-start;
+      }
+
+      .metric-strip,
+      .wall-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .metric-strip,
+      .wall-list,
+      .sync-actions,
+      .comment-form {
+        grid-template-columns: 1fr;
+      }
+
+      .workspace-header h2 {
+        font-size: 30px;
+      }
+
+      .editor-actions {
+        align-items: stretch;
+      }
+
+      .editor-actions .primary-btn,
+      .editor-actions .secondary-btn,
+      .editor-actions .ghost-btn {
+        width: 100%;
+      }
+
+      .editor-actions .save-state {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+      }
+
+      .writing-area {
+        min-height: 340px;
+        font-size: 15px;
+      }
+    }
+
+    html[data-layout="phone"] body {
+      overflow-x: hidden;
+    }
+
+    html[data-layout="phone"] .app-shell {
+      display: block;
+      width: 100%;
+      max-width: 520px;
+      min-height: 100vh;
+      margin: 0 auto;
+      overflow: visible;
+      box-shadow: 0 0 0 1px var(--line);
+    }
+
+    html[data-layout="phone"] .sidebar,
+    html[data-layout="phone"] .workspace,
+    html[data-layout="phone"] .right-rail {
+      height: auto;
+      min-height: 0;
+      overflow: visible;
+    }
+
+    html[data-layout="phone"] .sidebar {
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+      padding: 14px 12px;
+    }
+
+    html[data-layout="phone"] .workspace {
+      padding: 16px 12px 88px;
+    }
+
+    html[data-layout="phone"] .right-rail {
+      border-top: 1px solid var(--line);
+      border-left: 0;
+      padding: 16px 12px 88px;
+    }
+
+    html[data-layout="phone"] .studio-grid,
+    html[data-layout="phone"] .workspace-header,
+    html[data-layout="phone"] .editor-top,
+    html[data-layout="phone"] .feedback-grid {
+      grid-template-columns: 1fr;
+    }
+
+    html[data-layout="phone"] .metric-strip,
+    html[data-layout="phone"] .wall-list,
+    html[data-layout="phone"] .sync-actions,
+    html[data-layout="phone"] .comment-form {
+      grid-template-columns: 1fr;
+    }
+
+    html[data-layout="phone"] .workspace-header h2 {
+      font-size: 30px;
+    }
+
+    html[data-layout="phone"] .toolbar,
+    html[data-layout="phone"] .editor-actions {
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+
+    html[data-layout="phone"] .toolbar > button,
+    html[data-layout="phone"] .editor-actions > button {
+      width: 100%;
+    }
+
+    html[data-layout="phone"] .editor-actions .save-state {
+      width: 100%;
+      justify-content: center;
+      margin-left: 0;
+    }
+
+    html[data-layout="phone"] .writing-area {
+      min-height: 360px;
+      font-size: 15px;
+      padding: 18px;
+    }
+
+    html[data-layout="phone"] .feedback-header {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    html[data-layout="phone"] .feedback-header .count-pill {
+      grid-column: 1 / -1;
+      width: fit-content;
+    }
+
+    html[data-layout="phone"] .mobile-nav {
+      position: fixed;
+      right: 12px;
+      bottom: 12px;
+      left: 12px;
+      z-index: 30;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      max-width: 496px;
+      margin: 0 auto;
+      padding: 8px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: var(--toast-bg);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    html[data-layout="phone"] .mobile-nav button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--control-bg);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 760;
+    }
+
+    html[data-layout="phone"] .mobile-nav svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    html[data-layout="desktop"] body {
+      overflow-x: auto;
+    }
+
+    html[data-layout="desktop"] .app-shell {
+      display: grid;
+      grid-template-columns: 286px minmax(720px, 1fr) 390px;
+      min-width: 1180px;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    html[data-layout="desktop"] .sidebar,
+    html[data-layout="desktop"] .workspace,
+    html[data-layout="desktop"] .right-rail {
+      height: 100vh;
+      min-height: 0;
+      overflow-y: auto;
+    }
+
+    html[data-layout="desktop"] .sidebar {
+      border-right: 1px solid var(--line);
+      border-bottom: 0;
+    }
+
+    html[data-layout="desktop"] .right-rail {
+      grid-column: auto;
+      border-top: 0;
+      border-left: 1px solid var(--line);
+    }
+
+    html[data-layout="desktop"] .studio-grid {
+      grid-template-columns: minmax(0, 1fr) 310px;
+    }
+
+    html[data-layout="desktop"] .workspace-header {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    html[data-layout="desktop"] .editor-top {
+      grid-template-columns: minmax(0, 1fr) 170px;
+    }
+
+    html[data-layout="desktop"] .feedback-grid,
+    html[data-layout="desktop"] .metric-strip {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    html[data-layout="desktop"] .feedback-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    html[data-layout="desktop"] .wall-list {
+      grid-template-columns: 1fr;
+    }
+
+    html[data-layout="desktop"] .mobile-nav {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Personal spaces">
+      <button class="brand" id="homeBtn" type="button" title="Go to workspace home">
+        <div class="brand-mark" aria-hidden="true">
+          <img src="./logo.svg" alt="">
+        </div>
+        <div>
+          <h1>English Spaces</h1>
+          <p>Write, publish, review, improve.</p>
+        </div>
+      </button>
+
+      <div class="theme-switch soft-panel" role="group" aria-label="Theme">
+        <button class="theme-btn" data-theme-choice="dark" type="button">
+          <i data-lucide="moon"></i>
+          Dark
+        </button>
+        <button class="theme-btn" data-theme-choice="light" type="button">
+          <i data-lucide="sun"></i>
+          Cream
+        </button>
+      </div>
+
+      <div class="device-switch soft-panel" role="group" aria-label="Device layout">
+        <div class="section-title">
+          <h3>Device view</h3>
+          <span class="count-pill" id="deviceStatus">Auto</span>
+        </div>
+        <div class="device-options">
+          <button class="theme-btn device-btn" data-layout-choice="auto" type="button">
+            <i data-lucide="scan-line"></i>
+            Auto
+          </button>
+          <button class="theme-btn device-btn" data-layout-choice="desktop" type="button">
+            <i data-lucide="monitor"></i>
+            PC
+          </button>
+          <button class="theme-btn device-btn" data-layout-choice="phone" type="button">
+            <i data-lucide="smartphone"></i>
+            Phone
+          </button>
+        </div>
+      </div>
+
+      <form class="space-form soft-panel" id="spaceForm">
+        <label class="field-label" for="spaceName">New personal space</label>
+        <div class="row">
+          <input id="spaceName" name="spaceName" autocomplete="off" placeholder="Example: Ahmed">
+          <button class="icon-btn" type="submit" title="Create space" aria-label="Create space">
+            <i data-lucide="plus"></i>
+          </button>
+        </div>
+        <input id="spaceGoal" name="spaceGoal" autocomplete="off" placeholder="Goal, e.g. Write better essays">
+        <input id="spacePassword" name="spacePassword" type="password" autocomplete="new-password" placeholder="Deletion password, at least 4 characters">
+      </form>
+
+      <div class="section-title">
+        <h2>Spaces</h2>
+        <span class="count-pill" id="spaceCount">0</span>
+      </div>
+      <div class="spaces-list" id="spacesList"></div>
+
+      <div class="soft-panel static-note">
+        <p><strong>GitHub Pages mode:</strong> local writing works without a database. For every computer to see the same public wall, connect the live class board below.</p>
+      </div>
+
+      <div class="sync-panel live-sync-panel">
+        <div class="section-title">
+          <h3>Live class board</h3>
+          <span class="count-pill sync-status is-offline" id="liveSyncStatus">Local only</span>
+        </div>
+        <p>Use one Firebase Realtime Database URL for the whole class so published work and comments appear on every computer. Workspace passwords protect the app buttons from accidents, not the database itself.</p>
+        <label class="field-label" for="firebaseUrl">Firebase database URL</label>
+        <input id="firebaseUrl" autocomplete="off" placeholder="https://your-project-default-rtdb.firebaseio.com">
+        <label class="field-label" for="boardName">Board name</label>
+        <input id="boardName" autocomplete="off" placeholder="english-spaces-board">
+        <div class="sync-actions">
+          <button class="secondary-btn" id="connectSyncBtn" type="button">
+            <i data-lucide="plug"></i>
+            Connect
+          </button>
+          <button class="secondary-btn" id="syncNowBtn" type="button">
+            <i data-lucide="refresh-cw"></i>
+            Sync
+          </button>
+          <button class="secondary-btn" id="disconnectSyncBtn" type="button">
+            <i data-lucide="unlink"></i>
+            Local
+          </button>
+        </div>
+      </div>
+
+      <div class="sync-panel">
+        <div class="section-title">
+          <h3>Share board</h3>
+        </div>
+        <p>Use these tools to move the class board between browsers when you do not want a database.</p>
+        <div class="sync-actions">
+          <button class="secondary-btn" id="exportBtn" type="button">
+            <i data-lucide="download"></i>
+            Export
+          </button>
+          <button class="secondary-btn" id="importBtn" type="button">
+            <i data-lucide="upload"></i>
+            Import
+          </button>
+          <button class="secondary-btn" id="copyBtn" type="button">
+            <i data-lucide="copy"></i>
+            Copy
+          </button>
+        </div>
+        <input class="sr-only" id="importFile" type="file" accept="application/json">
+      </div>
+    </aside>
+
+    <main class="workspace" aria-label="Writing workspace">
+      <header class="workspace-header">
+        <div>
+          <div class="eyebrow">
+            <i data-lucide="pen-line"></i>
+            <span id="activeSpaceEyebrow">Personal space</span>
+          </div>
+          <h2 id="activeSpaceName">English practice</h2>
+          <p id="activeSpaceGoal">Create a space, write anything, publish it to the public wall, and get a CEFR style level estimate.</p>
+        </div>
+        <div class="toolbar">
+          <button class="secondary-btn" id="newEntryBtn" type="button">
+            <i data-lucide="file-plus"></i>
+            New writing
+          </button>
+          <button class="secondary-btn" id="protectSpaceBtn" type="button">
+            <i data-lucide="key-round"></i>
+            Password
+          </button>
+          <button class="ghost-btn" id="clearDemoBtn" type="button" title="Clear all local data">
+            <i data-lucide="refresh-cw"></i>
+            Reset
+          </button>
+        </div>
+      </header>
+
+      <section class="metric-strip" aria-label="Workspace statistics">
+        <div class="metric">
+          <span>Words</span>
+          <strong id="wordMetric">0</strong>
+        </div>
+        <div class="metric">
+          <span>Estimated level</span>
+          <strong id="levelMetric">-</strong>
+        </div>
+        <div class="metric">
+          <span>Published</span>
+          <strong id="publishedMetric">0</strong>
+        </div>
+        <div class="metric">
+          <span>Comments</span>
+          <strong id="commentMetric">0</strong>
+        </div>
+      </section>
+
+      <div class="studio-grid">
+        <section>
+          <article class="editor-shell">
+            <div class="editor-top">
+              <input class="entry-title-input" id="entryTitle" autocomplete="off" placeholder="Untitled writing">
+              <select id="entryKind" aria-label="Writing type">
+                <option>Story</option>
+                <option>Essay</option>
+                <option>Journal</option>
+                <option>Reflection</option>
+                <option>Email</option>
+                <option>Speech</option>
+              </select>
+            </div>
+            <div class="editor-actions">
+              <button class="secondary-btn" id="saveBtn" type="button">
+                <i data-lucide="save"></i>
+                Save draft
+              </button>
+              <button class="primary-btn" id="analyzeBtn" type="button">
+                <i data-lucide="sparkles"></i>
+                Analyze level
+              </button>
+              <button class="secondary-btn" id="publishBtn" type="button">
+                <i data-lucide="send"></i>
+                Publish
+              </button>
+              <span class="save-state" id="saveState">Autosaved locally</span>
+            </div>
+            <textarea class="writing-area" id="entryText" spellcheck="true" placeholder="Start writing here. It can be a story, essay, journal entry, reflection, or anything you want to practice."></textarea>
+          </article>
+
+          <section class="feedback-panel" id="feedbackPanel"></section>
+        </section>
+
+        <aside class="entry-list" aria-label="Drafts and published entries">
+          <div class="section-title">
+            <h3>This space</h3>
+            <span class="count-pill" id="entryCount">0</span>
+          </div>
+          <div class="draft-list" id="draftList"></div>
+        </aside>
+      </div>
+    </main>
+
+    <aside class="right-rail" aria-label="Public wall and AI settings">
+      <div class="section-title">
+        <h2>Public wall</h2>
+        <span class="count-pill" id="wallCount">0</span>
+      </div>
+      <div class="search-box">
+        <i data-lucide="search" aria-hidden="true"></i>
+        <input id="wallSearch" autocomplete="off" placeholder="Search names, titles, writing...">
+      </div>
+      <div class="wall-list" id="wallList"></div>
+
+      <div class="section-title">
+        <h2>AI feedback</h2>
+      </div>
+      <section class="settings-panel">
+        <label class="toggle-row">
+          <input id="useGemini" type="checkbox">
+          Use Gemini API when analyzing
+        </label>
+        <label class="field-label" for="geminiKey">Gemini API key</label>
+        <input id="geminiKey" type="password" autocomplete="off" placeholder="Paste your key here">
+        <label class="field-label" for="geminiModel">Model</label>
+        <input id="geminiModel" autocomplete="off" placeholder="gemini-3-flash-preview">
+        <p><strong>Do not paste an API key into this HTML file before publishing.</strong> GitHub Pages is public, so anyone can read keys hard-coded in the source. Paste your Gemini key here after opening the site; it is saved only in this browser's local storage.</p>
+        <p><a class="helper-link" href="https://aistudio.google.com/app/apikey" target="_blank" rel="noreferrer">Create a Gemini API key</a></p>
+      </section>
+
+      <div class="section-title">
+        <h2>Class levels</h2>
+      </div>
+      <section class="soft-panel">
+        <div class="level-bars" id="levelBars"></div>
+      </section>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <nav class="mobile-nav" aria-label="Phone shortcuts">
+    <button data-jump-target=".sidebar" type="button">
+      <i data-lucide="users"></i>
+      Spaces
+    </button>
+    <button data-jump-target=".workspace" type="button">
+      <i data-lucide="pen-line"></i>
+      Write
+    </button>
+    <button data-jump-target=".right-rail" type="button">
+      <i data-lucide="messages-square"></i>
+      Wall
+    </button>
+  </nav>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      var STORAGE_KEY = "english_spaces_studio_v1";
+      var APP_CONFIG = {
+        firebaseDatabaseUrl: "",
+        firebaseBoardName: "english-spaces-board",
+        liveSync: false
+      };
+      var LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
+      var COLORS = ["#74d3d0", "#a7e36f", "#f6b85a", "#ff7b97", "#b7a1ff", "#8fd6ff"];
+      var state = loadState();
+      var currentEntryId = null;
+      var toastTimer = null;
+      var syncTimer = null;
+      var syncPushTimer = null;
+      var syncBusy = false;
+      var syncStatusText = "";
+      var refs = {};
+
+      document.addEventListener("DOMContentLoaded", init);
+
+      function init() {
+        refs = {
+          homeBtn: document.getElementById("homeBtn"),
+          spaceForm: document.getElementById("spaceForm"),
+          spaceName: document.getElementById("spaceName"),
+          spaceGoal: document.getElementById("spaceGoal"),
+          spacePassword: document.getElementById("spacePassword"),
+          themeButtons: Array.prototype.slice.call(document.querySelectorAll("[data-theme-choice]")),
+          layoutButtons: Array.prototype.slice.call(document.querySelectorAll("[data-layout-choice]")),
+          deviceStatus: document.getElementById("deviceStatus"),
+          mobileJumpButtons: Array.prototype.slice.call(document.querySelectorAll("[data-jump-target]")),
+          firebaseUrl: document.getElementById("firebaseUrl"),
+          boardName: document.getElementById("boardName"),
+          liveSyncStatus: document.getElementById("liveSyncStatus"),
+          connectSyncBtn: document.getElementById("connectSyncBtn"),
+          syncNowBtn: document.getElementById("syncNowBtn"),
+          disconnectSyncBtn: document.getElementById("disconnectSyncBtn"),
+          spacesList: document.getElementById("spacesList"),
+          spaceCount: document.getElementById("spaceCount"),
+          activeSpaceEyebrow: document.getElementById("activeSpaceEyebrow"),
+          activeSpaceName: document.getElementById("activeSpaceName"),
+          activeSpaceGoal: document.getElementById("activeSpaceGoal"),
+          newEntryBtn: document.getElementById("newEntryBtn"),
+          protectSpaceBtn: document.getElementById("protectSpaceBtn"),
+          clearDemoBtn: document.getElementById("clearDemoBtn"),
+          wordMetric: document.getElementById("wordMetric"),
+          levelMetric: document.getElementById("levelMetric"),
+          publishedMetric: document.getElementById("publishedMetric"),
+          commentMetric: document.getElementById("commentMetric"),
+          entryTitle: document.getElementById("entryTitle"),
+          entryKind: document.getElementById("entryKind"),
+          entryText: document.getElementById("entryText"),
+          saveBtn: document.getElementById("saveBtn"),
+          analyzeBtn: document.getElementById("analyzeBtn"),
+          publishBtn: document.getElementById("publishBtn"),
+          saveState: document.getElementById("saveState"),
+          feedbackPanel: document.getElementById("feedbackPanel"),
+          entryCount: document.getElementById("entryCount"),
+          draftList: document.getElementById("draftList"),
+          wallCount: document.getElementById("wallCount"),
+          wallSearch: document.getElementById("wallSearch"),
+          wallList: document.getElementById("wallList"),
+          useGemini: document.getElementById("useGemini"),
+          geminiKey: document.getElementById("geminiKey"),
+          geminiModel: document.getElementById("geminiModel"),
+          levelBars: document.getElementById("levelBars"),
+          exportBtn: document.getElementById("exportBtn"),
+          importBtn: document.getElementById("importBtn"),
+          importFile: document.getElementById("importFile"),
+          copyBtn: document.getElementById("copyBtn"),
+          toast: document.getElementById("toast")
+        };
+
+        normalizeState();
+        applyTheme(state.settings.theme);
+        applyLayoutMode();
+        currentEntryId = pickInitialEntryId();
+        bindEvents();
+        render();
+        if (state.settings.syncEnabled) {
+          startLiveSync(false);
+        }
+      }
+
+      function bindEvents() {
+        refs.homeBtn.addEventListener("click", function () {
+          jumpToSection(".workspace");
+          refs.entryTitle.focus({ preventScroll: true });
+        });
+
+        refs.spaceForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          createSpace();
+        });
+
+        refs.themeButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            setTheme(button.dataset.themeChoice);
+          });
+        });
+
+        refs.layoutButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            setLayoutMode(button.dataset.layoutChoice);
+          });
+        });
+
+        refs.mobileJumpButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            jumpToSection(button.dataset.jumpTarget);
+          });
+        });
+
+        window.addEventListener("resize", function () {
+          if (state.settings.layoutMode === "auto") {
+            applyLayoutMode();
+            renderLayoutButtons();
+          }
+        });
+
+        refs.connectSyncBtn.addEventListener("click", connectLiveSync);
+        refs.syncNowBtn.addEventListener("click", function () {
+          saveSyncSettingsFromInputs(true);
+          remoteSyncNow({ pushAfterPull: true, announce: true });
+        });
+        refs.disconnectSyncBtn.addEventListener("click", disconnectLiveSync);
+
+        refs.spacesList.addEventListener("click", function (event) {
+          var deleteButton = event.target.closest("[data-action='delete-space']");
+          if (deleteButton) {
+            deleteSpace(deleteButton.dataset.spaceId);
+            return;
+          }
+          var button = event.target.closest("[data-action='open-space']");
+          if (!button) return;
+          switchSpace(button.dataset.spaceId);
+        });
+
+        refs.newEntryBtn.addEventListener("click", function () {
+          createEntry(true);
+        });
+
+        refs.protectSpaceBtn.addEventListener("click", updateActiveSpacePassword);
+
+        refs.clearDemoBtn.addEventListener("click", function () {
+          if (!window.confirm("Reset this browser's English Spaces data?")) return;
+          state = createSeedState();
+          currentEntryId = pickInitialEntryId();
+          saveState();
+          render();
+          showToast("Local board reset.");
+        });
+
+        refs.entryTitle.addEventListener("input", syncEditorFromInputs);
+        refs.entryKind.addEventListener("change", syncEditorFromInputs);
+        refs.entryText.addEventListener("input", syncEditorFromInputs);
+
+        refs.saveBtn.addEventListener("click", function () {
+          saveCurrentEntry(false);
+          renderEntryList();
+          renderMetrics();
+          showToast("Draft saved in this browser.");
+        });
+
+        refs.publishBtn.addEventListener("click", publishCurrentEntry);
+        refs.analyzeBtn.addEventListener("click", analyzeCurrentEntry);
+
+        refs.draftList.addEventListener("click", function (event) {
+          var button = event.target.closest("[data-entry-id]");
+          if (!button) return;
+          var action = button.dataset.action;
+          if (action === "open") {
+            currentEntryId = button.dataset.entryId;
+            render();
+            refs.entryTitle.focus();
+          }
+          if (action === "delete") {
+            deleteEntry(button.dataset.entryId);
+          }
+        });
+
+        refs.wallSearch.addEventListener("input", renderWall);
+
+        refs.wallList.addEventListener("click", function (event) {
+          var button = event.target.closest("[data-action]");
+          if (!button) return;
+          if (button.dataset.action === "open-wall-entry") {
+            openEntryFromWall(button.dataset.entryId);
+          }
+        });
+
+        refs.wallList.addEventListener("submit", function (event) {
+          var form = event.target.closest(".comment-form");
+          if (!form) return;
+          event.preventDefault();
+          addComment(form);
+        });
+
+        refs.useGemini.addEventListener("change", saveSettingsFromInputs);
+        refs.geminiKey.addEventListener("input", saveSettingsFromInputs);
+        refs.geminiModel.addEventListener("input", saveSettingsFromInputs);
+
+        refs.exportBtn.addEventListener("click", exportBoard);
+        refs.importBtn.addEventListener("click", function () {
+          refs.importFile.click();
+        });
+        refs.importFile.addEventListener("change", importBoard);
+        refs.copyBtn.addEventListener("click", copyBoardSnapshot);
+      }
+
+      function createSeedState() {
+        var now = new Date().toISOString();
+        var spaceA = "space-nadia";
+        var spaceB = "space-arif";
+        return {
+          activeSpaceId: spaceA,
+          spaces: [
+            {
+              id: spaceA,
+              name: "Nadia",
+              goal: "Write clearer reflections with better transitions.",
+              color: COLORS[0],
+              createdAt: now,
+              updatedAt: now
+            },
+            {
+              id: spaceB,
+              name: "Arif",
+              goal: "Practice stories and stronger paragraphs.",
+              color: COLORS[2],
+              createdAt: now,
+              updatedAt: now
+            }
+          ],
+          entries: [
+            {
+              id: "entry-welcome",
+              spaceId: spaceA,
+              title: "My first university week",
+              kind: "Reflection",
+              text: "This week I started a new semester and I noticed that my English writing needs more practice. I can explain my ideas, but sometimes my sentences become too long and the reader may lose the main point. My plan is to write short reflections every week, read other students' writing, and learn how they organize their paragraphs. I want to become more confident when I write emails, reports, and stories.",
+              status: "published",
+              createdAt: now,
+              updatedAt: now,
+              publishedAt: now,
+              analysis: {
+                level: "B1",
+                score: 54,
+                confidence: "Medium",
+                source: "Offline sample",
+                generatedAt: now,
+                summary: "Clear message and simple paragraph control. The writing explains goals well, but it can improve by using more varied sentence patterns and more precise vocabulary.",
+                strengths: ["Clear purpose", "Logical sequence", "Good use of examples"],
+                improvements: ["Vary sentence openings", "Use more specific verbs", "Add one stronger concluding sentence"],
+                nextPrompt: "Write a 150 word reflection about one class activity and include three transition phrases."
+              }
+            },
+            {
+              id: "entry-story",
+              spaceId: spaceB,
+              title: "The train that stopped at midnight",
+              kind: "Story",
+              text: "The train stopped in a quiet station that nobody expected to see. I looked through the window and saw one lamp shaking in the rain. At first, I thought the driver needed to check the engine, but then an old woman entered the carriage and gave every passenger a small blue ticket. She said the ticket was not for the train. It was for the memory we wanted to visit again.",
+              status: "published",
+              createdAt: now,
+              updatedAt: now,
+              publishedAt: now,
+              analysis: {
+                level: "B2",
+                score: 66,
+                confidence: "Medium",
+                source: "Offline sample",
+                generatedAt: now,
+                summary: "The story has atmosphere, control, and a clear narrative hook. It could move higher by adding richer detail and more complex grammar.",
+                strengths: ["Strong mood", "Good narrative pacing", "Effective final idea"],
+                improvements: ["Develop the scene with sensory detail", "Use a wider range of clauses", "Show the character's reaction more deeply"],
+                nextPrompt: "Continue the story for 200 words and include one flashback."
+              }
+            },
+            {
+              id: "entry-draft",
+              spaceId: spaceA,
+              title: "Untitled practice",
+              kind: "Journal",
+              text: "",
+              status: "draft",
+              createdAt: now,
+              updatedAt: now,
+              publishedAt: null,
+              analysis: null
+            }
+          ],
+          comments: [
+            {
+              id: "comment-1",
+              entryId: "entry-story",
+              author: "Nadia",
+              text: "I like the mystery in the final sentence. Maybe add what the main character feels next.",
+              createdAt: now
+            }
+          ],
+          settings: {
+            useGemini: false,
+            geminiKey: "",
+            geminiModel: "gemini-3-flash-preview",
+            theme: "dark",
+            layoutMode: "auto",
+            syncEnabled: false,
+            firebaseUrl: APP_CONFIG.firebaseDatabaseUrl,
+            boardName: APP_CONFIG.firebaseBoardName
+          },
+          deleted: {
+            spaces: {},
+            entries: {},
+            comments: {}
+          }
+        };
+      }
+
+      function loadState() {
+        try {
+          var saved = localStorage.getItem(STORAGE_KEY);
+          if (!saved) return createSeedState();
+          return JSON.parse(saved);
+        } catch (error) {
+          console.warn("Could not load saved state.", error);
+          return createSeedState();
+        }
+      }
+
+      function normalizeState() {
+        if (!Array.isArray(state.spaces)) state.spaces = [];
+        if (!Array.isArray(state.entries)) state.entries = [];
+        if (!Array.isArray(state.comments)) state.comments = [];
+        if (!state.settings) state.settings = {};
+        if (!state.settings.geminiModel) state.settings.geminiModel = "gemini-3-flash-preview";
+        if (typeof state.settings.useGemini !== "boolean") state.settings.useGemini = false;
+        if (!state.settings.geminiKey) state.settings.geminiKey = "";
+        if (state.settings.theme !== "light") state.settings.theme = "dark";
+        if (["auto", "desktop", "phone"].indexOf(state.settings.layoutMode) === -1) state.settings.layoutMode = "auto";
+        if (!state.settings.firebaseUrl && APP_CONFIG.firebaseDatabaseUrl) state.settings.firebaseUrl = APP_CONFIG.firebaseDatabaseUrl;
+        if (!state.settings.boardName) state.settings.boardName = APP_CONFIG.firebaseBoardName || "english-spaces-board";
+        if (typeof state.settings.syncEnabled !== "boolean") state.settings.syncEnabled = Boolean(APP_CONFIG.liveSync && state.settings.firebaseUrl);
+        if (!state.settings.clientId) state.settings.clientId = "client-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8);
+        if (!state.deleted) state.deleted = {};
+        if (!state.deleted.spaces) state.deleted.spaces = {};
+        if (!state.deleted.entries) state.deleted.entries = {};
+        if (!state.deleted.comments) state.deleted.comments = {};
+        state.spaces.forEach(function (space) {
+          if (!space.updatedAt) space.updatedAt = space.createdAt || new Date().toISOString();
+        });
+        if (!state.spaces.length) {
+          var seed = createSeedState();
+          state.spaces = seed.spaces;
+          state.entries = seed.entries;
+          state.comments = seed.comments;
+          state.activeSpaceId = seed.activeSpaceId;
+          state.deleted = seed.deleted;
+        }
+        applyDeletedMarks();
+        if (!getActiveSpace()) state.activeSpaceId = state.spaces[0].id;
+      }
+
+      function saveState() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      }
+
+      function setTheme(theme) {
+        state.settings.theme = theme === "light" ? "light" : "dark";
+        applyTheme(state.settings.theme);
+        saveState();
+        renderThemeButtons();
+      }
+
+      function applyTheme(theme) {
+        document.documentElement.dataset.theme = theme === "light" ? "light" : "dark";
+      }
+
+      function renderThemeButtons() {
+        refs.themeButtons.forEach(function (button) {
+          var active = button.dataset.themeChoice === state.settings.theme;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+      }
+
+      function setLayoutMode(mode) {
+        state.settings.layoutMode = ["auto", "desktop", "phone"].indexOf(mode) === -1 ? "auto" : mode;
+        applyLayoutMode();
+        saveState();
+        renderLayoutButtons();
+        showToast("Layout set to " + layoutLabel(state.settings.layoutMode) + ".");
+      }
+
+      function applyLayoutMode() {
+        var mode = state.settings.layoutMode || "auto";
+        var effective = getEffectiveLayout();
+        document.documentElement.dataset.layout = mode === "auto" && effective === "desktop" ? "auto" : effective;
+        document.documentElement.dataset.layoutPreference = mode;
+      }
+
+      function getEffectiveLayout() {
+        var mode = state.settings.layoutMode || "auto";
+        if (mode === "desktop" || mode === "phone") return mode;
+        return isPhoneLikeDevice() ? "phone" : "desktop";
+      }
+
+      function isPhoneLikeDevice() {
+        var narrow = window.matchMedia && window.matchMedia("(max-width: 760px)").matches;
+        var coarseSmall = window.matchMedia && window.matchMedia("(pointer: coarse) and (max-width: 980px)").matches;
+        return Boolean(narrow || coarseSmall);
+      }
+
+      function renderLayoutButtons() {
+        var effective = getEffectiveLayout();
+        refs.layoutButtons.forEach(function (button) {
+          var active = button.dataset.layoutChoice === state.settings.layoutMode;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        refs.deviceStatus.textContent = state.settings.layoutMode === "auto" ? "Auto: " + layoutLabel(effective) : layoutLabel(effective);
+      }
+
+      function layoutLabel(mode) {
+        return mode === "phone" ? "Phone" : mode === "desktop" ? "PC" : "Auto";
+      }
+
+      function jumpToSection(selector) {
+        var target = document.querySelector(selector);
+        if (!target) return;
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function saveSyncSettingsFromInputs(enable) {
+        state.settings.firebaseUrl = refs.firebaseUrl.value.trim();
+        state.settings.boardName = refs.boardName.value.trim() || "english-spaces-board";
+        if (enable) state.settings.syncEnabled = true;
+        saveState();
+      }
+
+      function connectLiveSync() {
+        saveSyncSettingsFromInputs(true);
+        if (!getFirebaseEndpoint()) {
+          state.settings.syncEnabled = false;
+          saveState();
+          setSyncStatus("Add a database URL", false);
+          refs.firebaseUrl.focus();
+          return;
+        }
+        startLiveSync(true);
+      }
+
+      function disconnectLiveSync() {
+        stopLiveSync();
+        state.settings.syncEnabled = false;
+        saveState();
+        setSyncStatus("Local only", false);
+        renderSettings();
+        showToast("Live sync disconnected on this browser.");
+      }
+
+      function startLiveSync(announce) {
+        stopLiveSync();
+        if (!state.settings.syncEnabled || !getFirebaseEndpoint()) {
+          setSyncStatus("Local only", false);
+          return;
+        }
+        setSyncStatus("Connecting...", true);
+        remoteSyncNow({ pushAfterPull: true, announce: announce });
+        syncTimer = window.setInterval(function () {
+          remoteSyncNow({ pushAfterPull: false, announce: false });
+        }, 6000);
+      }
+
+      function stopLiveSync() {
+        if (syncTimer) window.clearInterval(syncTimer);
+        if (syncPushTimer) window.clearTimeout(syncPushTimer);
+        syncTimer = null;
+        syncPushTimer = null;
+        syncBusy = false;
+      }
+
+      function scheduleRemotePush() {
+        if (!state.settings.syncEnabled || !getFirebaseEndpoint()) return;
+        if (syncPushTimer) window.clearTimeout(syncPushTimer);
+        syncPushTimer = window.setTimeout(function () {
+          pushRemoteBoard(false);
+        }, 1200);
+      }
+
+      async function remoteSyncNow(options) {
+        options = options || {};
+        if (!state.settings.syncEnabled || !getFirebaseEndpoint()) {
+          setSyncStatus("Local only", false);
+          return;
+        }
+        if (syncBusy) return;
+        syncBusy = true;
+        setSyncStatus("Syncing...", true);
+        try {
+          if (getCurrentEntry()) saveCurrentEntry(true);
+          var endpoint = getFirebaseEndpoint();
+          var response = await fetch(endpoint + "?t=" + Date.now(), {
+            method: "GET",
+            cache: "no-store"
+          });
+          if (!response.ok) throw new Error("Sync read failed: " + response.status);
+          var remote = await response.json();
+          var before = boardFingerprint();
+          if (remote && Array.isArray(remote.spaces) && Array.isArray(remote.entries)) {
+            mergeSnapshot(remote);
+            applyDeletedMarks();
+            if (before !== boardFingerprint()) {
+              saveState();
+              currentEntryId = getCurrentEntry() ? currentEntryId : pickInitialEntryId();
+              render();
+            }
+          }
+          if (!remote || options.pushAfterPull) {
+            await pushRemoteBoard(true);
+          } else {
+            setSyncStatus("Live " + formatTime(new Date().toISOString()), true);
+          }
+          if (options.announce) showToast("Live board synced.");
+        } catch (error) {
+          console.error(error);
+          setSyncStatus("Sync error", false);
+          if (options.announce) showToast("Live sync failed. Check the Firebase URL and rules.");
+        } finally {
+          syncBusy = false;
+        }
+      }
+
+      async function pushRemoteBoard(silent) {
+        if (!state.settings.syncEnabled || !getFirebaseEndpoint()) return;
+        if (syncBusy && !silent) {
+          scheduleRemotePush();
+          return;
+        }
+        var endpoint = getFirebaseEndpoint();
+        try {
+          if (!silent) {
+            syncBusy = true;
+            setSyncStatus("Publishing...", true);
+          }
+          var response = await fetch(endpoint, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(buildRemoteSnapshot())
+          });
+          if (!response.ok) throw new Error("Sync write failed: " + response.status);
+          setSyncStatus("Live " + formatTime(new Date().toISOString()), true);
+        } catch (error) {
+          console.error(error);
+          setSyncStatus("Sync error", false);
+        } finally {
+          if (!silent) syncBusy = false;
+        }
+      }
+
+      function getFirebaseEndpoint() {
+        var base = normalizeFirebaseUrl(state.settings.firebaseUrl || "");
+        if (!base) return "";
+        if (/\.json$/i.test(base)) return base;
+        return base + "/" + encodeURIComponent(slugifyBoardName(state.settings.boardName || "english-spaces-board")) + ".json";
+      }
+
+      function normalizeFirebaseUrl(value) {
+        var url = String(value || "").trim();
+        if (!url) return "";
+        url = url.replace(/\/+$/g, "");
+        if (!/^https:\/\/.+firebaseio\.com(\/.*)?$/i.test(url) && !/^https:\/\/.+firebasedatabase\.app(\/.*)?$/i.test(url)) {
+          return "";
+        }
+        return url;
+      }
+
+      function slugifyBoardName(value) {
+        return String(value || "english-spaces-board")
+          .toLowerCase()
+          .replace(/[^a-z0-9_-]+/g, "-")
+          .replace(/^-+|-+$/g, "") || "english-spaces-board";
+      }
+
+      function setSyncStatus(message, active) {
+        syncStatusText = message;
+        if (!refs.liveSyncStatus) return;
+        refs.liveSyncStatus.textContent = message;
+        refs.liveSyncStatus.classList.toggle("is-offline", !active);
+      }
+
+      function pickInitialEntryId() {
+        var activeId = state.activeSpaceId;
+        var draft = state.entries.find(function (entry) {
+          return entry.spaceId === activeId && entry.status === "draft";
+        });
+        if (draft) return draft.id;
+        var latest = state.entries
+          .filter(function (entry) { return entry.spaceId === activeId; })
+          .sort(function (a, b) { return new Date(b.updatedAt) - new Date(a.updatedAt); })[0];
+        if (latest) return latest.id;
+        return createEntry(false).id;
+      }
+
+      function getActiveSpace() {
+        return state.spaces.find(function (space) {
+          return space.id === state.activeSpaceId;
+        });
+      }
+
+      function getCurrentEntry() {
+        return state.entries.find(function (entry) {
+          return entry.id === currentEntryId;
+        });
+      }
+
+      function createSpace() {
+        var name = refs.spaceName.value.trim();
+        var goal = refs.spaceGoal.value.trim();
+        var password = refs.spacePassword.value.trim();
+        if (!name) {
+          showToast("Add a name for the space first.");
+          refs.spaceName.focus();
+          return;
+        }
+        if (password.length < 4) {
+          showToast("Add a deletion password with at least 4 characters.");
+          refs.spacePassword.focus();
+          return;
+        }
+        var space = {
+          id: makeId("space"),
+          name: name,
+          goal: goal || "Practice English writing and track progress.",
+          color: COLORS[state.spaces.length % COLORS.length],
+          deletePasswordHash: hashPassword(password),
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        };
+        state.spaces.push(space);
+        state.activeSpaceId = space.id;
+        refs.spaceName.value = "";
+        refs.spaceGoal.value = "";
+        refs.spacePassword.value = "";
+        currentEntryId = createEntry(false).id;
+        saveState();
+        render();
+        scheduleRemotePush();
+        showToast("Space created for " + space.name + ".");
+      }
+
+      function switchSpace(spaceId) {
+        if (spaceId === state.activeSpaceId) return;
+        saveCurrentEntry(true);
+        state.activeSpaceId = spaceId;
+        currentEntryId = pickInitialEntryId();
+        saveState();
+        render();
+      }
+
+      function deleteSpace(spaceId) {
+        var space = state.spaces.find(function (item) { return item.id === spaceId; });
+        if (!space) return;
+        if (state.spaces.length <= 1) {
+          showToast("Create another space before deleting the last workspace.");
+          return;
+        }
+
+        var hasPassword = Boolean(space.deletePasswordHash);
+        if (!hasPassword) {
+          saveCurrentEntry(true);
+          state.activeSpaceId = spaceId;
+          currentEntryId = pickInitialEntryId();
+          saveState();
+          render();
+          showToast("Set a deletion password for this workspace before deleting it.");
+          return;
+        }
+
+        var typed = window.prompt('Enter the deletion password for "' + space.name + '".');
+        if (typed === null) return;
+
+        var allowed = hashPassword(typed.trim()) === space.deletePasswordHash;
+        if (!allowed) {
+          showToast("Workspace was not deleted. Password did not match.");
+          return;
+        }
+
+        var ownedEntries = state.entries.filter(function (entry) { return entry.spaceId === spaceId; });
+        var entryIds = ownedEntries.map(function (entry) { return entry.id; });
+        var entryCount = ownedEntries.length;
+        if (!window.confirm('Delete "' + space.name + '" and ' + entryCount + " writing page" + (entryCount === 1 ? "" : "s") + "?")) {
+          return;
+        }
+
+        saveCurrentEntry(true);
+        rememberDeleted("spaces", spaceId);
+        entryIds.forEach(function (entryId) {
+          rememberDeleted("entries", entryId);
+        });
+        state.comments.forEach(function (comment) {
+          if (entryIds.indexOf(comment.entryId) !== -1) rememberDeleted("comments", comment.id);
+        });
+        state.spaces = state.spaces.filter(function (item) { return item.id !== spaceId; });
+        state.entries = state.entries.filter(function (entry) { return entry.spaceId !== spaceId; });
+        state.comments = state.comments.filter(function (comment) {
+          return entryIds.indexOf(comment.entryId) === -1;
+        });
+        if (state.activeSpaceId === spaceId) {
+          state.activeSpaceId = state.spaces[0].id;
+          currentEntryId = pickInitialEntryId();
+        } else if (!getCurrentEntry()) {
+          currentEntryId = pickInitialEntryId();
+        }
+        saveState();
+        render();
+        scheduleRemotePush();
+        showToast("Workspace deleted.");
+      }
+
+      function updateActiveSpacePassword() {
+        var space = getActiveSpace();
+        if (!space) return;
+
+        if (space.deletePasswordHash) {
+          var current = window.prompt('Enter the current deletion password for "' + space.name + '".');
+          if (current === null) return;
+          if (hashPassword(current.trim()) !== space.deletePasswordHash) {
+            showToast("Password was not changed. Current password did not match.");
+            return;
+          }
+        }
+
+        var next = window.prompt('Set a new deletion password for "' + space.name + '". Use at least 4 characters.');
+        if (next === null) return;
+        next = next.trim();
+        if (next.length < 4) {
+          showToast("Password was not changed. Use at least 4 characters.");
+          return;
+        }
+
+        space.deletePasswordHash = hashPassword(next);
+        space.updatedAt = new Date().toISOString();
+        saveState();
+        renderSpaces();
+        renderWorkspaceHeader();
+        hydrateIcons();
+        scheduleRemotePush();
+        showToast("Workspace deletion password updated.");
+      }
+
+      function createEntry(announce) {
+        var now = new Date().toISOString();
+        var entry = {
+          id: makeId("entry"),
+          spaceId: state.activeSpaceId,
+          title: "Untitled practice",
+          kind: "Journal",
+          text: "",
+          status: "draft",
+          createdAt: now,
+          updatedAt: now,
+          publishedAt: null,
+          analysis: null
+        };
+        state.entries.unshift(entry);
+        currentEntryId = entry.id;
+        saveState();
+        if (announce) {
+          render();
+          refs.entryTitle.focus();
+          showToast("New writing page ready.");
+        }
+        return entry;
+      }
+
+      function deleteEntry(entryId) {
+        var entry = state.entries.find(function (item) { return item.id === entryId; });
+        if (!entry) return;
+        if (!window.confirm("Delete \"" + entry.title + "\" from this browser?")) return;
+        var wasPublished = entry.status === "published";
+        rememberDeleted("entries", entryId);
+        state.comments.forEach(function (comment) {
+          if (comment.entryId === entryId) rememberDeleted("comments", comment.id);
+        });
+        state.entries = state.entries.filter(function (item) { return item.id !== entryId; });
+        state.comments = state.comments.filter(function (comment) { return comment.entryId !== entryId; });
+        if (currentEntryId === entryId) currentEntryId = pickInitialEntryId();
+        saveState();
+        render();
+        if (wasPublished) scheduleRemotePush();
+        showToast("Writing deleted.");
+      }
+
+      function saveCurrentEntry(silent) {
+        var entry = getCurrentEntry();
+        if (!entry) entry = createEntry(false);
+        entry.title = refs.entryTitle.value.trim() || "Untitled practice";
+        entry.kind = refs.entryKind.value;
+        entry.text = refs.entryText.value;
+        entry.updatedAt = new Date().toISOString();
+        saveState();
+        refs.saveState.textContent = "Saved " + formatTime(entry.updatedAt);
+        if (!silent) showToast("Saved locally.");
+        return entry;
+      }
+
+      function syncEditorFromInputs() {
+        var entry = getCurrentEntry();
+        if (!entry) return;
+        entry.title = refs.entryTitle.value.trim() || "Untitled practice";
+        entry.kind = refs.entryKind.value;
+        entry.text = refs.entryText.value;
+        entry.updatedAt = new Date().toISOString();
+        saveState();
+        refs.saveState.textContent = "Autosaved " + formatTime(entry.updatedAt);
+        renderMetrics();
+        if (entry.status === "published") scheduleRemotePush();
+      }
+
+      function publishCurrentEntry() {
+        var entry = saveCurrentEntry(true);
+        if (wordCount(entry.text) < 20) {
+          showToast("Write at least 20 words before publishing.");
+          refs.entryText.focus();
+          return;
+        }
+        if (!entry.analysis) {
+          entry.analysis = estimateWriting(entry.text, "Offline estimator");
+        }
+        entry.status = "published";
+        entry.publishedAt = entry.publishedAt || new Date().toISOString();
+        entry.updatedAt = new Date().toISOString();
+        saveState();
+        render();
+        scheduleRemotePush();
+        showToast("Published to the public wall.");
+      }
+
+      async function analyzeCurrentEntry() {
+        var entry = saveCurrentEntry(true);
+        if (wordCount(entry.text) < 20) {
+          showToast("Write at least 20 words so the level estimate is useful.");
+          refs.entryText.focus();
+          return;
+        }
+
+        setAnalyzeLoading(true);
+
+        try {
+          var analysis;
+          if (state.settings.useGemini && state.settings.geminiKey.trim()) {
+            analysis = await analyzeWithGemini(entry);
+          } else {
+            analysis = estimateWriting(entry.text, "Offline estimator");
+          }
+          entry.analysis = analysis;
+          entry.updatedAt = new Date().toISOString();
+          saveState();
+          render();
+          showToast("Level estimate updated: " + analysis.level + ".");
+        } catch (error) {
+          console.error(error);
+          entry.analysis = estimateWriting(entry.text, "Offline fallback");
+          entry.analysis.summary = "Gemini could not be reached, so the app used the offline estimator. " + entry.analysis.summary;
+          saveState();
+          render();
+          showToast("AI request failed. Used offline estimate instead.");
+        } finally {
+          setAnalyzeLoading(false);
+        }
+      }
+
+      function setAnalyzeLoading(isLoading) {
+        refs.analyzeBtn.disabled = isLoading;
+        refs.analyzeBtn.innerHTML = isLoading
+          ? '<i data-lucide="loader-circle"></i> Analyzing'
+          : '<i data-lucide="sparkles"></i> Analyze level';
+        hydrateIcons();
+      }
+
+      async function analyzeWithGemini(entry) {
+        var modelInput = state.settings.geminiModel.trim() || "gemini-3-flash-preview";
+        var modelPath = modelInput.indexOf("models/") === 0 ? modelInput : "models/" + modelInput;
+        var endpoint = "https://generativelanguage.googleapis.com/v1beta/" + modelPath + ":generateContent?key=" + encodeURIComponent(state.settings.geminiKey.trim());
+        var prompt = [
+          "You are a careful English writing assessor.",
+          "Evaluate the writing using CEFR levels only: A1, A2, B1, B2, C1, C2.",
+          "Return only valid JSON with this shape:",
+          "{\"level\":\"B1\",\"score\":54,\"confidence\":\"Medium\",\"summary\":\"...\",\"strengths\":[\"...\"],\"improvements\":[\"...\"],\"nextPrompt\":\"...\"}",
+          "Score must be 1 to 100. Be kind, honest, and practical. Do not mention that you are an AI.",
+          "",
+          "Writing type: " + entry.kind,
+          "Title: " + entry.title,
+          "Writing:",
+          entry.text
+        ].join("\n");
+
+        var response = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            contents: [
+              {
+                parts: [
+                  {
+                    text: prompt
+                  }
+                ]
+              }
+            ],
+            generationConfig: {
+              temperature: 0.2,
+              responseMimeType: "application/json"
+            }
+          })
+        });
+
+        if (!response.ok) {
+          var message = await response.text();
+          throw new Error("Gemini error " + response.status + ": " + message);
+        }
+
+        var data = await response.json();
+        var raw = "";
+        if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) {
+          raw = data.candidates[0].content.parts.map(function (part) {
+            return part.text || "";
+          }).join("\n");
+        }
+        if (!raw) throw new Error("Gemini returned no text.");
+        return normalizeAnalysis(parseJsonFromText(raw), "Gemini API");
+      }
+
+      function parseJsonFromText(text) {
+        var clean = text.trim()
+          .replace(/^```json/i, "")
+          .replace(/^```/i, "")
+          .replace(/```$/i, "")
+          .trim();
+        try {
+          return JSON.parse(clean);
+        } catch (error) {
+          var match = clean.match(/\{[\s\S]*\}/);
+          if (!match) throw error;
+          return JSON.parse(match[0]);
+        }
+      }
+
+      function normalizeAnalysis(value, source) {
+        var level = String(value.level || value.cefr || value.cefr_level || "B1").toUpperCase().trim();
+        if (LEVELS.indexOf(level) === -1) level = "B1";
+        var score = clamp(Number(value.score || levelToScore(level)), 1, 100);
+        return {
+          level: level,
+          score: Math.round(score),
+          confidence: String(value.confidence || "Medium").slice(0, 28),
+          source: source,
+          generatedAt: new Date().toISOString(),
+          summary: limitText(value.summary || "The writing was reviewed for clarity, grammar, vocabulary, structure, and control.", 420),
+          strengths: listOf(value.strengths, ["Clear effort", "Readable main idea", "Good practice foundation"]),
+          improvements: listOf(value.improvements, ["Add more detail", "Check grammar patterns", "Use stronger transitions"]),
+          nextPrompt: limitText(value.nextPrompt || value.next_prompt || "Rewrite the piece with clearer paragraphs and three new transition phrases.", 260)
+        };
+      }
+
+      function estimateWriting(text, source) {
+        var words = tokenizeWords(text);
+        var sentences = splitSentences(text);
+        var wordTotal = words.length;
+        var sentenceTotal = Math.max(sentences.length, 1);
+        var avgSentence = wordTotal / sentenceTotal;
+        var uniqueRatio = unique(words).length / Math.max(wordTotal, 1);
+        var longWordRatio = words.filter(function (word) { return word.length >= 7; }).length / Math.max(wordTotal, 1);
+        var connectors = countMatches(text, /\b(however|therefore|although|because|while|since|moreover|furthermore|instead|finally|meanwhile|for example|in contrast|as a result)\b/gi);
+        var punctuationRange = countMatches(text, /[;:()]/g);
+        var paragraphCount = text.split(/\n\s*\n/).filter(function (part) { return part.trim().length > 0; }).length;
+        var repeatedStarts = countRepeatedSentenceStarts(sentences);
+        var commonIssues = countMatches(text, /\b(i\s+has|he\s+have|she\s+have|they\s+is|people\s+can\s+has|thier|writting|imporve|spcae|alot)\b/gi);
+
+        var score = 18;
+        score += Math.min(wordTotal, 260) * 0.075;
+        score += Math.min(avgSentence, 24) * 1.05;
+        score += uniqueRatio * 20;
+        score += longWordRatio * 34;
+        score += Math.min(connectors, 8) * 3.2;
+        score += Math.min(punctuationRange, 7) * 1.6;
+        score += Math.min(paragraphCount, 4) * 2.4;
+        score -= repeatedStarts * 2.2;
+        score -= commonIssues * 5.2;
+        score = clamp(score, 8, 94);
+
+        var level = scoreToLevel(score);
+        var strengths = [];
+        var improvements = [];
+
+        if (wordTotal >= 120) strengths.push("You wrote enough text for the reader to see your ideas develop.");
+        if (uniqueRatio > 0.55) strengths.push("Your vocabulary has good variety.");
+        if (connectors >= 3) strengths.push("You used transition words to connect ideas.");
+        if (paragraphCount >= 2) strengths.push("Your writing is organized into separate parts.");
+        if (!strengths.length) strengths.push("You have a clear starting point for regular writing practice.");
+
+        if (wordTotal < 90) improvements.push("Write a longer piece so your ideas can develop more fully.");
+        if (avgSentence < 9) improvements.push("Combine some short sentences to show more sentence control.");
+        if (avgSentence > 26) improvements.push("Break very long sentences into clearer smaller sentences.");
+        if (connectors < 2) improvements.push("Add transition phrases such as however, because, for example, and as a result.");
+        if (paragraphCount < 2 && wordTotal > 90) improvements.push("Use paragraphs to separate the beginning, middle, and ending.");
+        if (commonIssues > 0) improvements.push("Check common grammar and spelling slips before publishing.");
+        if (!improvements.length) improvements.push("Try using more precise verbs and one complex sentence with although or while.");
+
+        return {
+          level: level,
+          score: Math.round(score),
+          confidence: wordTotal >= 120 ? "Medium" : "Low",
+          source: source,
+          generatedAt: new Date().toISOString(),
+          summary: "Estimated from length, sentence control, vocabulary variety, transitions, paragraphing, and common error signals. This is useful for practice, but it is not an official exam score.",
+          strengths: strengths.slice(0, 3),
+          improvements: improvements.slice(0, 3),
+          nextPrompt: nextPromptForLevel(level)
+        };
+      }
+
+      function render() {
+        renderSpaces();
+        renderWorkspaceHeader();
+        renderSettings();
+        renderEditor();
+        renderEntryList();
+        renderFeedback();
+        renderMetrics();
+        renderWall();
+        renderLevelBars();
+        hydrateIcons();
+      }
+
+      function renderSpaces() {
+        refs.spaceCount.textContent = state.spaces.length;
+        refs.spacesList.innerHTML = state.spaces.map(function (space) {
+          var count = state.entries.filter(function (entry) { return entry.spaceId === space.id; }).length;
+          return [
+            '<div class="space-card">',
+            '<button class="space-item ' + (space.id === state.activeSpaceId ? "is-active" : "") + '" data-action="open-space" data-space-id="' + escapeHtml(space.id) + '" type="button">',
+            '<span class="space-color" style="background:' + escapeHtml(space.color) + '"></span>',
+            '<span>',
+            '<span class="space-name">' + escapeHtml(space.name) + '</span>',
+            '<span class="space-goal">' + escapeHtml(space.goal) + '</span>',
+            '</span>',
+            '<span class="count-pill">' + count + '</span>',
+            '</button>',
+            '<button class="icon-btn danger-btn space-delete" data-action="delete-space" data-space-id="' + escapeHtml(space.id) + '" type="button" title="Delete workspace" aria-label="Delete ' + escapeHtml(space.name) + ' workspace">',
+            '<i data-lucide="trash-2"></i>',
+            '</button>',
+            '</div>'
+          ].join("");
+        }).join("");
+      }
+
+      function renderWorkspaceHeader() {
+        var space = getActiveSpace();
+        refs.activeSpaceEyebrow.textContent = space && space.deletePasswordHash ? "Protected personal space" : (space ? "Personal space" : "Workspace");
+        refs.activeSpaceName.textContent = space ? space.name + "'s writing space" : "English practice";
+        refs.activeSpaceGoal.textContent = space ? space.goal : "Create a space and start writing.";
+      }
+
+      function renderEditor() {
+        var entry = getCurrentEntry();
+        if (!entry) {
+          entry = createEntry(false);
+        }
+        refs.entryTitle.value = entry.title || "";
+        refs.entryKind.value = entry.kind || "Journal";
+        refs.entryText.value = entry.text || "";
+        refs.saveState.textContent = entry.updatedAt ? "Saved " + formatTime(entry.updatedAt) : "Autosaved locally";
+      }
+
+      function renderEntryList() {
+        var entries = state.entries
+          .filter(function (entry) { return entry.spaceId === state.activeSpaceId; })
+          .sort(function (a, b) { return new Date(b.updatedAt) - new Date(a.updatedAt); });
+        refs.entryCount.textContent = entries.length;
+
+        if (!entries.length) {
+          refs.draftList.innerHTML = '<div class="empty-state"><p>No writing yet. Create a new page and start practicing.</p></div>';
+          return;
+        }
+
+        refs.draftList.innerHTML = entries.map(function (entry) {
+          var analysis = entry.analysis ? '<span class="level-pill">' + escapeHtml(entry.analysis.level) + '</span>' : "";
+          var status = entry.status === "published" ? '<span class="status-pill">Public</span>' : '<span class="count-pill">Draft</span>';
+          return [
+            '<article class="draft-card ' + (entry.id === currentEntryId ? "is-active" : "") + '">',
+            '<button class="ghost-btn" data-action="open" data-entry-id="' + escapeHtml(entry.id) + '" type="button">',
+            '<strong>' + escapeHtml(entry.title || "Untitled practice") + '</strong>',
+            '</button>',
+            '<div class="draft-meta">',
+            '<span>' + escapeHtml(entry.kind || "Journal") + '</span>',
+            '<span>' + wordCount(entry.text) + ' words</span>',
+            status,
+            analysis,
+            '</div>',
+            '<div class="wall-actions">',
+            '<button class="secondary-btn" data-action="open" data-entry-id="' + escapeHtml(entry.id) + '" type="button"><i data-lucide="eye"></i> Open</button>',
+            '<button class="ghost-btn" data-action="delete" data-entry-id="' + escapeHtml(entry.id) + '" type="button"><i data-lucide="trash-2"></i> Delete</button>',
+            '</div>',
+            '</article>'
+          ].join("");
+        }).join("");
+        hydrateIcons();
+      }
+
+      function renderFeedback() {
+        var entry = getCurrentEntry();
+        var analysis = entry && entry.analysis;
+        if (!analysis) {
+          refs.feedbackPanel.innerHTML = [
+            '<div class="feedback-header">',
+            '<div class="score-ring" style="--score-angle: 0deg"><span>-</span></div>',
+            '<div>',
+            '<h3>No level estimate yet</h3>',
+            '<p>Click Analyze level to get offline feedback, or enable Gemini API in the AI feedback panel.</p>',
+            '</div>',
+            '<span class="count-pill">Practice</span>',
+            '</div>'
+          ].join("");
+          return;
+        }
+
+        refs.feedbackPanel.style.setProperty("--score-angle", Math.round(analysis.score * 3.6) + "deg");
+        refs.feedbackPanel.innerHTML = [
+          '<div class="feedback-header">',
+          '<div class="score-ring" style="--score-angle:' + Math.round(analysis.score * 3.6) + 'deg"><span>' + escapeHtml(analysis.level) + '</span></div>',
+          '<div>',
+          '<h3>Estimated CEFR level: ' + escapeHtml(analysis.level) + '</h3>',
+          '<p>' + escapeHtml(analysis.summary) + '</p>',
+          '</div>',
+          '<span class="count-pill">' + escapeHtml(analysis.source || "Estimator") + '</span>',
+          '</div>',
+          '<div class="feedback-grid">',
+          '<div class="feedback-box">',
+          '<h4>Strengths</h4>',
+          '<ul>' + analysis.strengths.map(function (item) { return '<li>' + escapeHtml(item) + '</li>'; }).join("") + '</ul>',
+          '</div>',
+          '<div class="feedback-box">',
+          '<h4>Improve next</h4>',
+          '<ul>' + analysis.improvements.map(function (item) { return '<li>' + escapeHtml(item) + '</li>'; }).join("") + '</ul>',
+          '</div>',
+          '<div class="feedback-box full">',
+          '<h4>Next prompt</h4>',
+          '<p>' + escapeHtml(analysis.nextPrompt) + '</p>',
+          '</div>',
+          '</div>'
+        ].join("");
+      }
+
+      function renderMetrics() {
+        var entry = getCurrentEntry();
+        var spaceEntries = state.entries.filter(function (item) { return item.spaceId === state.activeSpaceId; });
+        var published = spaceEntries.filter(function (item) { return item.status === "published"; });
+        var comments = published.reduce(function (total, item) {
+          return total + state.comments.filter(function (comment) { return comment.entryId === item.id; }).length;
+        }, 0);
+        refs.wordMetric.textContent = entry ? wordCount(entry.text) : 0;
+        refs.levelMetric.textContent = entry && entry.analysis ? entry.analysis.level : "-";
+        refs.publishedMetric.textContent = published.length;
+        refs.commentMetric.textContent = comments;
+      }
+
+      function renderWall() {
+        var query = refs.wallSearch.value.trim().toLowerCase();
+        var published = state.entries
+          .filter(function (entry) { return entry.status === "published"; })
+          .sort(function (a, b) { return new Date(b.publishedAt || b.updatedAt) - new Date(a.publishedAt || a.updatedAt); })
+          .filter(function (entry) {
+            if (!query) return true;
+            var space = state.spaces.find(function (item) { return item.id === entry.spaceId; });
+            var haystack = [entry.title, entry.kind, entry.text, space ? space.name : "", entry.analysis ? entry.analysis.level : ""].join(" ").toLowerCase();
+            return haystack.indexOf(query) !== -1;
+          });
+
+        refs.wallCount.textContent = published.length;
+        if (!published.length) {
+          refs.wallList.innerHTML = '<div class="empty-state"><p>No public writing matches this view yet.</p></div>';
+          return;
+        }
+
+        refs.wallList.innerHTML = published.map(renderWallCard).join("");
+        hydrateIcons();
+      }
+
+      function renderWallCard(entry) {
+        var space = state.spaces.find(function (item) { return item.id === entry.spaceId; });
+        var comments = state.comments
+          .filter(function (comment) { return comment.entryId === entry.id; })
+          .sort(function (a, b) { return new Date(a.createdAt) - new Date(b.createdAt); });
+        var analysis = entry.analysis || estimateWriting(entry.text, "Offline preview");
+        var commentMarkup = comments.length ? comments.map(function (comment) {
+          return [
+            '<div class="comment">',
+            '<div class="comment-meta"><strong>' + escapeHtml(comment.author) + '</strong><span>' + formatTime(comment.createdAt) + '</span></div>',
+            '<p>' + escapeHtml(comment.text) + '</p>',
+            '</div>'
+          ].join("");
+        }).join("") : '<p>No comments yet.</p>';
+
+        return [
+          '<article class="wall-card">',
+          '<div class="wall-meta">',
+          '<span>' + escapeHtml(space ? space.name : "Unknown writer") + '</span>',
+          '<span>' + escapeHtml(entry.kind || "Writing") + '</span>',
+          '<span class="level-pill">' + escapeHtml(analysis.level) + '</span>',
+          '<span>' + formatTime(entry.publishedAt || entry.updatedAt) + '</span>',
+          '</div>',
+          '<h3>' + escapeHtml(entry.title || "Untitled practice") + '</h3>',
+          '<p class="wall-text">' + escapeHtml(entry.text) + '</p>',
+          '<div class="wall-actions">',
+          '<button class="secondary-btn" data-action="open-wall-entry" data-entry-id="' + escapeHtml(entry.id) + '" type="button"><i data-lucide="eye"></i> Open</button>',
+          '<span class="count-pill">' + comments.length + ' comments</span>',
+          '</div>',
+          '<div class="comments">',
+          commentMarkup,
+          '<form class="comment-form" data-entry-id="' + escapeHtml(entry.id) + '">',
+          '<input name="author" autocomplete="off" placeholder="Your name">',
+          '<textarea name="comment" placeholder="Add a helpful comment"></textarea>',
+          '<button class="icon-btn" type="submit" title="Post comment" aria-label="Post comment"><i data-lucide="send"></i></button>',
+          '</form>',
+          '</div>',
+          '</article>'
+        ].join("");
+      }
+
+      function renderSettings() {
+        applyTheme(state.settings.theme);
+        applyLayoutMode();
+        renderThemeButtons();
+        renderLayoutButtons();
+        refs.useGemini.checked = Boolean(state.settings.useGemini);
+        refs.geminiKey.value = state.settings.geminiKey || "";
+        refs.geminiModel.value = state.settings.geminiModel || "gemini-3-flash-preview";
+        refs.firebaseUrl.value = state.settings.firebaseUrl || "";
+        refs.boardName.value = state.settings.boardName || "english-spaces-board";
+        setSyncStatus(syncStatusText || (state.settings.syncEnabled ? "Live on" : "Local only"), Boolean(state.settings.syncEnabled && getFirebaseEndpoint()));
+      }
+
+      function renderLevelBars() {
+        var counts = LEVELS.reduce(function (result, level) {
+          result[level] = 0;
+          return result;
+        }, {});
+        state.entries.forEach(function (entry) {
+          if (entry.status === "published" && entry.analysis && counts[entry.analysis.level] !== undefined) {
+            counts[entry.analysis.level] += 1;
+          }
+        });
+        var max = Math.max.apply(null, Object.keys(counts).map(function (level) { return counts[level]; }).concat([1]));
+        refs.levelBars.innerHTML = LEVELS.map(function (level) {
+          var width = Math.max(4, Math.round((counts[level] / max) * 100));
+          return [
+            '<div class="level-row">',
+            '<strong>' + level + '</strong>',
+            '<div class="bar"><span style="width:' + width + '%"></span></div>',
+            '<span>' + counts[level] + '</span>',
+            '</div>'
+          ].join("");
+        }).join("");
+      }
+
+      function openEntryFromWall(entryId) {
+        var entry = state.entries.find(function (item) { return item.id === entryId; });
+        if (!entry) return;
+        saveCurrentEntry(true);
+        state.activeSpaceId = entry.spaceId;
+        currentEntryId = entry.id;
+        saveState();
+        render();
+        refs.entryTitle.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      function addComment(form) {
+        var entryId = form.dataset.entryId;
+        var author = form.elements.author.value.trim() || "Reader";
+        var text = form.elements.comment.value.trim();
+        if (!text) {
+          showToast("Write a comment first.");
+          return;
+        }
+        state.comments.push({
+          id: makeId("comment"),
+          entryId: entryId,
+          author: author,
+          text: text,
+          createdAt: new Date().toISOString()
+        });
+        saveState();
+        renderWall();
+        renderMetrics();
+        scheduleRemotePush();
+        showToast("Comment added.");
+      }
+
+      function saveSettingsFromInputs() {
+        state.settings.useGemini = refs.useGemini.checked;
+        state.settings.geminiKey = refs.geminiKey.value.trim();
+        state.settings.geminiModel = refs.geminiModel.value.trim() || "gemini-3-flash-preview";
+        saveState();
+      }
+
+      function exportBoard() {
+        var snapshot = buildShareSnapshot();
+        var blob = new Blob([JSON.stringify(snapshot, null, 2)], { type: "application/json" });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement("a");
+        link.href = url;
+        link.download = "english-spaces-board-" + new Date().toISOString().slice(0, 10) + ".json";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+        showToast("Board exported.");
+      }
+
+      function importBoard(event) {
+        var file = event.target.files && event.target.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function () {
+          try {
+            var imported = JSON.parse(String(reader.result || "{}"));
+            mergeSnapshot(imported);
+            saveState();
+            currentEntryId = pickInitialEntryId();
+            render();
+            scheduleRemotePush();
+            showToast("Board imported and merged.");
+          } catch (error) {
+            console.error(error);
+            showToast("That file could not be imported.");
+          } finally {
+            refs.importFile.value = "";
+          }
+        };
+        reader.readAsText(file);
+      }
+
+      function copyBoardSnapshot() {
+        var snapshot = JSON.stringify(buildShareSnapshot(), null, 2);
+        if (!navigator.clipboard) {
+          showToast("Clipboard is unavailable. Use Export instead.");
+          return;
+        }
+        navigator.clipboard.writeText(snapshot).then(function () {
+          showToast("Board JSON copied.");
+        }).catch(function () {
+          showToast("Clipboard blocked. Use Export instead.");
+        });
+      }
+
+      function buildShareSnapshot() {
+        return {
+          version: 1,
+          exportedAt: new Date().toISOString(),
+          spaces: state.spaces,
+          entries: state.entries,
+          comments: state.comments,
+          deleted: state.deleted || { spaces: {}, entries: {}, comments: {} }
+        };
+      }
+
+      function buildRemoteSnapshot() {
+        var publishedEntryIds = state.entries
+          .filter(function (entry) { return entry.status === "published"; })
+          .map(function (entry) { return entry.id; });
+        return {
+          version: 1,
+          updatedAt: new Date().toISOString(),
+          updatedBy: state.settings.clientId,
+          spaces: state.spaces,
+          entries: state.entries.filter(function (entry) {
+            return entry.status === "published";
+          }),
+          comments: state.comments.filter(function (comment) {
+            return publishedEntryIds.indexOf(comment.entryId) !== -1;
+          }),
+          deleted: state.deleted || { spaces: {}, entries: {}, comments: {} }
+        };
+      }
+
+      function mergeSnapshot(snapshot) {
+        if (!Array.isArray(snapshot.spaces) || !Array.isArray(snapshot.entries)) {
+          throw new Error("Invalid snapshot.");
+        }
+        state.deleted = mergeDeleted(state.deleted, snapshot.deleted);
+        state.spaces = mergeById(state.spaces, snapshot.spaces);
+        state.entries = mergeById(state.entries, snapshot.entries);
+        if (Array.isArray(snapshot.comments)) {
+          state.comments = mergeById(state.comments, snapshot.comments);
+        }
+        applyDeletedMarks();
+        normalizeState();
+      }
+
+      function mergeById(current, incoming) {
+        var map = {};
+        current.forEach(function (item) { map[item.id] = item; });
+        incoming.forEach(function (item) {
+          if (!item || !item.id) return;
+          if (!map[item.id] || itemIsNewer(item, map[item.id])) {
+            map[item.id] = item;
+          }
+        });
+        return Object.keys(map).map(function (key) { return map[key]; });
+      }
+
+      function itemIsNewer(next, previous) {
+        var nextTime = new Date(next.updatedAt || next.publishedAt || next.createdAt || 0).getTime();
+        var previousTime = new Date(previous.updatedAt || previous.publishedAt || previous.createdAt || 0).getTime();
+        return nextTime >= previousTime;
+      }
+
+      function mergeDeleted(current, incoming) {
+        var result = {
+          spaces: Object.assign({}, current && current.spaces),
+          entries: Object.assign({}, current && current.entries),
+          comments: Object.assign({}, current && current.comments)
+        };
+        if (!incoming) return result;
+        ["spaces", "entries", "comments"].forEach(function (type) {
+          Object.keys(incoming[type] || {}).forEach(function (id) {
+            result[type][id] = latestIso(result[type][id], incoming[type][id]);
+          });
+        });
+        return result;
+      }
+
+      function latestIso(a, b) {
+        if (!a) return b;
+        if (!b) return a;
+        return new Date(a) > new Date(b) ? a : b;
+      }
+
+      function rememberDeleted(type, id) {
+        if (!id) return;
+        if (!state.deleted) state.deleted = { spaces: {}, entries: {}, comments: {} };
+        if (!state.deleted[type]) state.deleted[type] = {};
+        state.deleted[type][id] = new Date().toISOString();
+      }
+
+      function applyDeletedMarks() {
+        var deleted = state.deleted || { spaces: {}, entries: {}, comments: {} };
+        state.spaces = state.spaces.filter(function (space) {
+          return !deleted.spaces || !deleted.spaces[space.id];
+        });
+        state.entries = state.entries.filter(function (entry) {
+          return !deleted.entries || !deleted.entries[entry.id];
+        });
+        state.comments = state.comments.filter(function (comment) {
+          return !deleted.comments || !deleted.comments[comment.id];
+        });
+      }
+
+      function boardFingerprint() {
+        return JSON.stringify({
+          spaces: state.spaces,
+          entries: state.entries.filter(function (entry) { return entry.status === "published"; }),
+          comments: state.comments,
+          deleted: state.deleted
+        });
+      }
+
+      function makeId(prefix) {
+        if (window.crypto && crypto.randomUUID) return prefix + "-" + crypto.randomUUID();
+        return prefix + "-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8);
+      }
+
+      function hashPassword(password) {
+        var text = String(password || "").trim();
+        var hash = 2166136261;
+        for (var index = 0; index < text.length; index += 1) {
+          hash ^= text.charCodeAt(index);
+          hash += (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
+        }
+        return "v1-" + (hash >>> 0).toString(16);
+      }
+
+      function tokenizeWords(text) {
+        return (text.toLowerCase().match(/[a-z]+(?:'[a-z]+)?/g) || []);
+      }
+
+      function wordCount(text) {
+        return tokenizeWords(text || "").length;
+      }
+
+      function splitSentences(text) {
+        return (text.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [])
+          .map(function (sentence) { return sentence.trim(); })
+          .filter(Boolean);
+      }
+
+      function unique(items) {
+        var seen = {};
+        return items.filter(function (item) {
+          if (seen[item]) return false;
+          seen[item] = true;
+          return true;
+        });
+      }
+
+      function countMatches(text, pattern) {
+        var matches = text.match(pattern);
+        return matches ? matches.length : 0;
+      }
+
+      function countRepeatedSentenceStarts(sentences) {
+        var starts = sentences.map(function (sentence) {
+          var match = sentence.toLowerCase().match(/[a-z]+/);
+          return match ? match[0] : "";
+        }).filter(Boolean);
+        var counts = starts.reduce(function (result, start) {
+          result[start] = (result[start] || 0) + 1;
+          return result;
+        }, {});
+        return Object.keys(counts).reduce(function (total, key) {
+          return total + Math.max(0, counts[key] - 2);
+        }, 0);
+      }
+
+      function scoreToLevel(score) {
+        if (score < 28) return "A1";
+        if (score < 42) return "A2";
+        if (score < 58) return "B1";
+        if (score < 74) return "B2";
+        if (score < 88) return "C1";
+        return "C2";
+      }
+
+      function levelToScore(level) {
+        return {
+          A1: 20,
+          A2: 35,
+          B1: 52,
+          B2: 68,
+          C1: 82,
+          C2: 94
+        }[level] || 52;
+      }
+
+      function nextPromptForLevel(level) {
+        var prompts = {
+          A1: "Write 80 words about your daily routine. Use first, then, after that, and finally.",
+          A2: "Write 120 words about a memorable day. Include because, but, and so.",
+          B1: "Write 180 words giving your opinion about studying online. Include examples and a conclusion.",
+          B2: "Write 220 words comparing two ways to learn English. Use although, however, and as a result.",
+          C1: "Write a 280 word argument with a counterargument and a concise final recommendation.",
+          C2: "Write a polished 350 word essay with subtle tone, precise vocabulary, and varied sentence rhythm."
+        };
+        return prompts[level] || prompts.B1;
+      }
+
+      function listOf(value, fallback) {
+        if (!Array.isArray(value)) return fallback;
+        var cleaned = value.map(function (item) {
+          return limitText(String(item || "").trim(), 160);
+        }).filter(Boolean);
+        return cleaned.length ? cleaned.slice(0, 4) : fallback;
+      }
+
+      function limitText(text, max) {
+        text = String(text || "").trim();
+        return text.length > max ? text.slice(0, max - 1) + "." : text;
+      }
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function formatTime(value) {
+        if (!value) return "just now";
+        var date = new Date(value);
+        if (Number.isNaN(date.getTime())) return "just now";
+        return date.toLocaleString([], {
+          month: "short",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        });
+      }
+
+      function escapeHtml(value) {
+        return String(value == null ? "" : value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      function showToast(message) {
+        clearTimeout(toastTimer);
+        refs.toast.textContent = message;
+        refs.toast.classList.add("is-visible");
+        toastTimer = setTimeout(function () {
+          refs.toast.classList.remove("is-visible");
+        }, 2600);
+      }
+
+      function hydrateIcons() {
+        if (window.lucide && typeof window.lucide.createIcons === "function") {
+          window.lucide.createIcons();
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
